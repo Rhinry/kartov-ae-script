@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <title>KARTOV SCRIPT</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="search-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Ara...">
+        </div>
+        <nav class="nav-tabs" id="tabContainer">
+            <div class="tab" data-target="p-fav" style="color:#ffd700;">★ FAV</div>
+            <div class="tab active" data-target="p-motion">MOTION</div>
+            <div class="tab" data-target="p-layer">LAYER</div>
+            <div class="tab" data-target="p-text">TEXT</div>
+            <div class="tab" data-target="p-util">PROJ</div>
+            <div class="tab" data-target="p-legal">LEGAL</div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="search-results-container">
+            <h3>Sonuçlar</h3>
+            <div class="grid-2" id="search-results-grid"></div>
+        </div>
+
+        <div id="p-fav" class="content-panel">
+            <div class="cat-header">FAVORİ ARAÇLARIM</div>
+            <div class="grid-2" id="fav-grid">
+                <div style="grid-column: span 2; text-align:center; color:#666; padding:20px; font-size:10px;">
+                    Henüz favori eklemediniz.<br>Butonların üzerindeki yıldıza tıklayın.
+                </div>
+            </div>
+        </div>
+
+        <div id="p-motion" class="content-panel active">
+            <div class="panel-row">
+                <div class="panel-col">
+                    <div class="cat-header">EASE & CURVES</div>
+                    <div class="grid-1">
+                        <button class="btn" data-cmd="ease" data-tip="Keyframe'lere standart F9 Easy Ease (%33) uygular.">⏳ Ease</button>
+                        <button class="btn" data-cmd="easeIn" data-tip="Hareketi yavaşça bitirir. (Ease In - Giriş Sert, Bitiş Yumuşak)">↘ In</button>
+                        <button class="btn" data-cmd="easeOut" data-tip="Hareketi yavaşça başlatır. (Ease Out - Başlangıç Yumuşak, Çıkış Sert)">↗ Out</button>
+                        <button class="btn" data-cmd="bounce" data-tip="Hareketin sonuna fiziksel sekme/zıplama (Bounce) efekti ekler.">🏀 Bounce</button>
+                        <button class="btn" data-cmd="overshoot" data-tip="Hareket hedefini biraz geçip geri gelen elastik bir duruş ekler.">↩ Over</button>
+                        <button class="btn" data-cmd="elastic" data-tip="Nesneye sürekli devam eden elastik sallanma hareketi verir.">〰 Elastic</button>
+                    </div>
+                </div>
+                <div class="panel-col">
+                    <div class="cat-header">AUTO MOTORS</div>
+                    <div class="grid-1">
+                        <button class="btn" data-cmd="auto_pop" data-tip="Katmanı Scale: 0 > 110 > 100 değerleriyle yaylanarak açar.">💥 Pop</button>
+                        <button class="btn" data-cmd="auto_fade" data-tip="Katmanın başına ve sonuna otomatik Opacity (Fade In/Out) ekler.">🌑 Fade</button>
+                        <button class="btn" data-cmd="auto_slide" data-tip="Katmanı soldan sağa kayarak ve görünürleşerek sahneye sokar.">➡ Slide</button>
+                        <button class="btn" data-cmd="auto_swing" data-tip="Katmana rüzgarda sallanıyormuş gibi hafif bir Rotation verir.">💃 Swing</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-header">SHAKE & WIGGLE</div>
+            <div class="grid-2">
+                <button class="btn" data-cmd="shake_2d" data-tip="Pozisyona sürekli ve rastgele bir titreme (Wiggle) ekler.">🫨 2D Shake</button>
+                <button class="btn" data-cmd="shake_3d" data-tip="Katmanı 3D yapar ve Z ekseninde rastgele dönme/titreme ekler.">🌀 3D Shake</button>
+                <button class="btn" data-cmd="cam_hand" data-tip="Kameraya veya katmana gerçekçi el kamerası titremesi verir.">🎥 Handheld</button>
+                <button class="btn" data-cmd="wiggle_con" data-tip="Titreme hızını ve gücünü Effect Controls panelinden yönetmeni sağlar.">🎛 Wiggle UI</button>
+            </div>
+        </div>
+
+        <div id="p-layer" class="content-panel">
+            <div class="panel-row">
+                <div class="panel-col">
+                    <div class="cat-header">ANCHOR</div>
+                    <div class="anchor-grid">
+                        <button class="g-btn" data-cmd="anc_0" data-tip="Anchor Point: SOL ÜST Köşe">↖</button>
+                        <button class="g-btn" data-cmd="anc_1" data-tip="Anchor Point: ÜST ORTA">↑</button>
+                        <button class="g-btn" data-cmd="anc_2" data-tip="Anchor Point: SAĞ ÜST Köşe">↗</button>
+                        <button class="g-btn" data-cmd="anc_3" data-tip="Anchor Point: SOL ORTA">←</button>
+                        <button class="g-btn" data-cmd="anc_4" data-tip="Anchor Point: TAM MERKEZ">●</button>
+                        <button class="g-btn" data-cmd="anc_5" data-tip="Anchor Point: SAĞ ORTA">→</button>
+                        <button class="g-btn" data-cmd="anc_6" data-tip="Anchor Point: SOL ALT Köşe">↙</button>
+                        <button class="g-btn" data-cmd="anc_7" data-tip="Anchor Point: ALT ORTA">↓</button>
+                        <button class="g-btn" data-cmd="anc_8" data-tip="Anchor Point: SAĞ ALT Köşe">↘</button>
+                    </div>
+                </div>
+                <div class="panel-col">
+                    <div class="cat-header">MANUAL LABELS</div>
+                    <div class="grid-3">
+                        <div class="c-btn c-red" data-cmd="col_1" data-tip="Etiket Rengi: KIRMIZI"></div>
+                        <div class="c-btn c-yell" data-cmd="col_2" data-tip="Etiket Rengi: SARI"></div>
+                        <div class="c-btn c-green" data-cmd="col_9" data-tip="Etiket Rengi: YEŞİL"></div>
+                        <div class="c-btn c-blue" data-cmd="col_8" data-tip="Etiket Rengi: MAVİ"></div>
+                        <div class="c-btn c-purp" data-cmd="col_5" data-tip="Etiket Rengi: MOR"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-header">AUTO LABELS</div>
+            <button class="btn full" id="btnToggleLabels" style="margin-bottom: 8px;">⚙️ Renk Ayarlarını Aç/Kapat</button>
+            <div id="labelConfigGrid" class="label-config-grid">
+                </div>
+            <button class="btn full" data-cmd="auto_label" style="border-left: 3px solid #F2B705; margin-bottom: 15px;" data-tip="Kompozisyondaki tüm katmanları belirlenen renklere göre otomatik ayarlar.">🪄 Otomatik Renklendir</button>
+
+            <div class="cat-header">SHAPE TOOLS</div>
+            <div class="grid-3">
+                <button class="btn" data-cmd="sh_round" data-tip="Shape Layer köşelerini yumuşatır (Round Corners).">⚪ Round</button>
+                <button class="btn" data-cmd="sh_trim" data-tip="Shape Layer'a çizgi animasyonu için Trim Paths ekler.">✂ Trim</button>
+                <button class="btn" data-cmd="sh_stroke" data-tip="Şeklin Dolgu (Fill) ve Çizgi (Stroke) renklerini yer değiştirir.">🔄 Swap</button>
+            </div>
+
+            <div class="cat-header">RIGGING</div>
+            <div class="grid-2">
+                <button class="btn" data-cmd="null_rig" data-tip="Seçili tüm katmanları TEK BİR Null objesine bağlar.">🔗 Single Rig</button>
+                <button class="btn" data-cmd="offset" data-tip="Katmanları merdiven şeklinde 5 frame arayla sıralar.">📶 Offset</button>
+                <button class="btn" data-cmd="parent_chain" data-tip="Katmanları birbirine zincirleme bağlar (1>2, 2>3...).">⛓ Chain</button>
+                <button class="btn" data-cmd="shy_tog" data-tip="Timeline'da 'Shy' (Gizli) işaretli katmanları gizler/gösterir.">🙈 Shy Toggle</button>
+            </div>
+
+            <div class="cat-header">CREATE</div>
+            <div class="grid-4">
+                <button class="btn" data-cmd="mk_null" data-tip="Yeni bir Null Object oluşturur.">Null</button>
+                <button class="btn" data-cmd="mk_adj" data-tip="Yeni bir Adjustment Layer oluşturur.">Adj</button>
+                <button class="btn" data-cmd="mk_solid" data-tip="Kompozisyon boyutunda siyah Solid oluşturur.">Solid</button>
+                <button class="btn" data-cmd="mk_cam" data-tip="Standart ayarlarda 3D Kamera oluşturur.">Cam</button>
+            </div>
+        </div>
+
+        <div id="p-text" class="content-panel">
+            <div class="panel-row">
+                <div class="panel-col">
+                    <div class="cat-header">ANIMATIONS</div>
+                    <div class="grid-1">
+                        <button class="btn" data-cmd="txt_type" data-tip="Karakter bazlı profesyonel Daktilo efekti.">⌨ Typewriter</button>
+                        <button class="btn" data-cmd="txt_fade" data-tip="Kelimeler sırayla Opacity artarak (Fade in) görünür.">🗣 Fade Words</button>
+                        <button class="btn" data-cmd="txt_decode" data-tip="Harfler rastgele karakterlerden dönüşerek (Matrix tarzı) gelir.">🤖 Decoder</button>
+                        <button class="btn" data-cmd="txt_lines" data-tip="Satırlar aşağıdan yukarıya maskelenerek kayar.">📜 Slide Lines</button>
+                        <button class="btn" data-cmd="txt_track" data-tip="Harf aralıkları (Tracking) genişten dara doğru animasyonlanır.">↔ Tracking</button>
+                    </div>
+                </div>
+                <div class="panel-col">
+                    <div class="cat-header">CONVERTER</div>
+                    <div class="grid-1">
+                        <button class="btn" data-cmd="cnv_up" data-tip="Seçili metni TAMAMEN BÜYÜK HARFE çevirir.">ABC</button>
+                        <button class="btn" data-cmd="cnv_low" data-tip="Seçili metni tamamen küçük harfe çevirir.">abc</button>
+                        <button class="btn" data-cmd="cnv_cap" data-tip="Kelimelerin Sadece Baş Harflerini Büyük Yapar.">Abc</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="p-util" class="content-panel">
+            <div class="cat-header">BATCH RENAME</div>
+            <div class="input-group">
+                <input type="text" id="renameInp" placeholder="Yeni isim...">
+                <button class="btn" id="btnRename" style="width:auto;" data-tip="Seçili katmanları topluca yeniden adlandırır.">GO</button>
+            </div>
+
+            <div class="panel-row">
+                <div class="panel-col">
+                    <div class="cat-header">TIME</div>
+                    <div class="grid-1">
+                        <button class="btn" data-cmd="time_post" data-tip="Videoyu 12 FPS yaparak Stop Motion havası verir.">🎞 Posterize</button>
+                        <button class="btn" data-cmd="time_rev" data-tip="Seçili katmanı/videoyu geriye sarar (Reverse).">◀ Reverse</button>
+                    </div>
+                </div>
+                <div class="panel-col">
+                    <div class="cat-header">ORGANIZE</div>
+                    <div class="grid-1">
+                        <button class="btn" data-cmd="prd_fold" data-tip="Proje panelinde standart klasör yapısını (Main, Assets...) oluşturur.">📂 Folders</button>
+                        <button class="btn" data-cmd="prd_clean" data-tip="Kullanılmayan dosyaları ve boş klasörleri projeden siler.">🧹 Clean</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cat-header">PRODUCTION</div>
+            <div class="grid-2">
+                <button class="btn" data-cmd="prd_pre" data-tip="Seçili katmanları yeni bir Pre-Comp içine alır.">📦 Pre-Comp</button>
+                <button class="btn" data-cmd="prd_nulls" data-tip="Seçili HER katman için AYRI birer Null oluşturur ve bağlar.">🔗 Indiv. Nulls</button>
+            </div>
+            
+            <button class="btn full" id="btnProxyToggle" style="margin-bottom: 15px; border-left: 3px solid #F44336;" data-tip="Tüm projede proxy kullanımını topluca açıp kapatır.">🔴 Proxies: KAPALI</button>
+
+            <div class="cat-header">RENDER & EXPORT</div>
+            <div class="grid-3">
+                <button class="btn" data-cmd="prd_ren" data-tip="Seçili kompozisyonu AE Render Kuyruğuna ekler.">💾 Render</button>
+                <button class="btn" data-cmd="prd_ame" data-tip="Seçili kompozisyonu Adobe Media Encoder'a gönderir.">🚀 AME</button>
+                <button class="btn" data-cmd="prd_shot" data-tip="Şu anki kareyi PNG olarak kaydeder ve klasörü açar.">📸 Shot</button>
+            </div>
+            <button class="btn full" data-cmd="prd_purge" data-tip="RAM ve Disk Önbelleğini tamamen temizler (Hafıza boşaltır).">🔥 PURGE ALL</button>
+
+            <div class="cat-header">EXPRESSIONS</div>
+            <div class="grid-3">
+                <button class="btn" data-cmd="exp_loop" data-tip="Animasyonu sürekli tekrar eder (loopOut).">Loop</button>
+                <button class="btn" data-cmd="exp_ping" data-tip="Animasyon git-gel yapar (Pingpong).">Ping</button>
+                <button class="btn" data-cmd="exp_inert" data-tip="Hareket bitince fiziksel salınım (Inertial Bounce) ekler.">Inertia</button>
+            </div>
+        </div>
+
+        <div id="p-legal" class="content-panel">
+            <div class="cat-header">LEGAL TOOL</div>
+            <div class="legal-box">
+                <textarea id="legalInp" placeholder="Metin yapıştır..."></textarea>
+                <button class="btn full" id="btnCalc" style="background:var(--primary); color:#000; font-weight:800;" data-tip="Metin uzunluğuna göre ideal okuma süresini hesaplar.">HESAPLA</button>
+                <div class="res-row">Kelime: <span id="resW">0</span> | Süre: <span id="resT" style="color:var(--primary)">0s</span></div>
+                
+                <button class="btn full" data-cmd="mk_legal_layer" style="margin-top:10px" data-tip="Ekranın altına standart 'Yasal Uyarı' metin katmanı ekler.">📝 Legal Katmanı</button>
+                <button class="btn full" data-cmd="pal_convert" style="margin-top:5px;" data-tip="Seçili kompozisyonu 720x576 PAL formatına çevirir ve ortalar.">📺 PAL Format</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="animPreview">
+        <div class="preview-box" id="pBox"></div>
+        <div class="preview-text" id="pText">TEXT</div>
+    </div>
+
+    <div id="toast-container"></div>
+    <div id="tooltip">KARTOV SCRIPT - Ready</div>
+
+    <script src="CSInterface.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
